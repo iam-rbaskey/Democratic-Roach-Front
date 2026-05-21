@@ -3,7 +3,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { ArrowLeft, Landmark, ShieldAlert, Award, Scale, Cpu, Heart, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -193,7 +192,7 @@ export default function ManifestoPage() {
             Democratic Roach Front<span className="text-drf-red">.</span>
           </h1>
           <p className="font-geist-mono text-xs sm:text-sm tracking-wider text-drf-text/55 uppercase font-bold">
-            National Manifesto v1.0 — "NOT LEFT. NOT RIGHT. FORWARD."
+            National Manifesto v1.0 — &ldquo;NOT LEFT. NOT RIGHT. FORWARD.&rdquo;
           </p>
         </div>
       </section>
@@ -341,7 +340,7 @@ export default function ManifestoPage() {
                 National Reform Agenda
               </h2>
               <p className="text-xs sm:text-sm text-drf-text/60 mb-10 max-w-xl">
-                We have compiled a modular, 12-point reform manifesto aimed directly at resolving the structural bottlenecks in India's governance.
+                We have compiled a modular, 12-point reform manifesto aimed directly at resolving the structural bottlenecks in India&apos;s governance.
               </p>
 
               <div className="flex flex-col border border-drf-border bg-white rounded-xl divide-y divide-drf-border overflow-hidden">

@@ -5,6 +5,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -41,7 +42,7 @@ export default function Navbar() {
         }`}
       >
         <div className="flex items-center justify-between w-full">
-          <a href="/#home" className="flex items-center gap-2 group select-none">
+          <Link href="/#home" className="flex items-center gap-2 group select-none">
             <span className="font-geist font-black text-xl tracking-tighter text-drf-text group-hover:text-drf-red transition-colors duration-300">
               DRF<span className="text-drf-red">.</span>
             </span>
@@ -50,11 +51,11 @@ export default function Navbar() {
                 Youth Movement
               </span>
             </div>
-          </a>
+          </Link>
 
           <div className="hidden md:flex items-center gap-1.5 relative">
             {links.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className="relative px-3.5 py-1.5 font-geist font-medium text-xs text-drf-text/75 hover:text-drf-text transition-colors duration-300 rounded-full"
@@ -69,18 +70,18 @@ export default function Navbar() {
                   />
                 )}
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
           <div className="hidden md:flex items-center">
-            <a
+            <Link
               href="/#join"
               className="group flex items-center gap-1 px-4 py-1.5 bg-drf-red hover:bg-drf-dark-red text-white text-xs font-semibold rounded-full shadow-[0_4px_12px_rgba(139,0,0,0.2)] hover:shadow-[0_4px_20px_rgba(139,0,0,0.4)] transition-all duration-300"
             >
               Join The Front
               <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
+            </Link>
           </div>
 
           <button
@@ -125,30 +126,27 @@ export default function Navbar() {
               </div>
 
               <div className="flex flex-col gap-4 z-10 flex-grow justify-center">
-                {links.map((link, idx) => (
-                  <motion.a
-                    initial={{ x: 20, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    transition={{ delay: idx * 0.1 }}
+                {links.map((link) => (
+                  <Link
                     key={link.label}
                     href={link.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className="font-geist font-black text-3xl tracking-tight text-drf-text hover:text-drf-red transition-colors"
                   >
                     {link.label}
-                  </motion.a>
+                  </Link>
                 ))}
               </div>
 
               <div className="z-10 mt-auto">
-                <a
+                <Link
                   href="/#join"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center gap-2 w-full py-4 bg-drf-red hover:bg-drf-dark-red text-white text-center font-bold rounded-lg shadow-lg"
                 >
                   Join The Front
                   <ArrowUpRight className="w-4 h-4" />
-                </a>
+                </Link>
                 <p className="text-[10px] text-center text-drf-text/35 font-geist-mono uppercase tracking-widest mt-6">
                   Not Left. Not Right. Forward.
                 </p>

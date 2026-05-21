@@ -2,6 +2,8 @@
 
 "use client";
 
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="relative bg-[#0F0F0F] text-white py-16 overflow-hidden border-t border-drf-red/10">
@@ -72,9 +74,9 @@ export default function Footer() {
             © {new Date().getFullYear()} DEMOCRATIC ROACH FRONT.
           </div>
           <div className="flex gap-4">
-            <a href="/manifesto" className="hover:text-white transition-colors">Manifesto v1.0</a>
+            <Link href="/manifesto" className="hover:text-white transition-colors">Manifesto v1.0</Link>
             <span>{"//"}</span>
-            <a href="/#join" className="hover:text-white transition-colors">Join Movement</a>
+            <Link href="/#join" className="hover:text-white transition-colors">Join Movement</Link>
           </div>
         </div>
 
