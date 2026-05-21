@@ -125,7 +125,7 @@ npm install
 ### 2. Configure Database Connection
 Create or edit your local connection file. The MongoDB URI is configured inside `src/lib/db.ts`:
 ```typescript
-const MONGODB_URI = "mongodb+srv://rbaskeyofficial:rbaskeyofficial@cluster0.lnstw.mongodb.net/drf?appName=Cluster0";
+
 ```
 
 ### 3. Run Dev Server
