@@ -5,23 +5,19 @@
 export default function Footer() {
   return (
     <footer className="relative bg-[#0F0F0F] text-white py-16 overflow-hidden border-t border-drf-red/10">
-      {/* Background visual accents */}
       <div className="absolute inset-0 grid-overlay opacity-[0.02] pointer-events-none z-0" />
       <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-drf-red/5 blur-[80px] pointer-events-none z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 flex flex-col items-center">
         
-        {/* Massive Headline Quote */}
         <div className="w-full text-center mb-12 select-none">
           <span className="font-geist font-black text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-tighter text-white/5 uppercase block leading-none">
             IGNORED NO MORE.
           </span>
         </div>
 
-        {/* Middle Bar: Slogan and Socials */}
         <div className="w-full flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-white/5 mb-8">
           
-          {/* Logo & Slogan */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
             <span className="font-geist font-black text-lg tracking-tighter text-white">
               DRF<span className="text-drf-red">.</span>
@@ -31,7 +27,6 @@ export default function Footer() {
             </span>
           </div>
 
-          {/* Social Icons */}
           <div className="flex items-center gap-4">
             <a
               href="https://instagram.com"
@@ -72,15 +67,14 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Footer Sub-info */}
         <div className="w-full flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left select-none text-[10px] font-geist-mono text-white/35 uppercase tracking-widest">
           <div>
             © {new Date().getFullYear()} DEMOCRATIC ROACH FRONT.
           </div>
           <div className="flex gap-4">
-            <a href="#manifesto" className="hover:text-white transition-colors">Manifesto v1.0</a>
+            <a href="/manifesto" className="hover:text-white transition-colors">Manifesto v1.0</a>
             <span>{"//"}</span>
-            <a href="#join" className="hover:text-white transition-colors">Join Movement</a>
+            <a href="/#join" className="hover:text-white transition-colors">Join Movement</a>
           </div>
         </div>
 

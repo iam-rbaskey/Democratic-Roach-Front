@@ -9,7 +9,6 @@ import { ArrowDown } from "lucide-react";
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   
-  // Parallax scrolling hooks
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
@@ -20,7 +19,6 @@ export default function Hero() {
   const symbolRotate = useTransform(scrollYProgress, [0, 1], [0, 25]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  // Slogan letter separation for kinetic typography
   const mainLine1 = "NOT LEFT.";
   const mainLine2 = "NOT RIGHT.";
   
@@ -30,15 +28,10 @@ export default function Hero() {
       id="home"
       className="relative min-h-screen w-full flex flex-col justify-between overflow-hidden bg-drf-bg-primary pt-24 pb-12 select-none"
     >
-      {/* Background Grid Overlay */}
       <div className="absolute inset-0 grid-overlay z-0 pointer-events-none" />
-
-      {/* Subtle scanline scrolling effect */}
       <div className="absolute top-0 left-0 w-full h-[3px] bg-drf-red/10 z-10 pointer-events-none animate-scanline" />
 
-      {/* Floating Red Glow Particles */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Glow Orb 1 */}
         <motion.div
           animate={{
             x: [0, 40, -20, 0],
@@ -52,7 +45,6 @@ export default function Hero() {
           }}
           className="absolute top-[20%] left-[10%] w-[350px] h-[350px] rounded-full bg-drf-red/5 blur-[80px]"
         />
-        {/* Glow Orb 2 */}
         <motion.div
           animate={{
             x: [0, -30, 40, 0],
@@ -68,7 +60,6 @@ export default function Hero() {
           className="absolute bottom-[15%] right-[10%] w-[450px] h-[450px] rounded-full bg-drf-red/7 blur-[100px]"
         />
         
-        {/* Small floating particles */}
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
@@ -92,15 +83,12 @@ export default function Hero() {
         ))}
       </div>
 
-      {/* Main Content Area */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 flex-grow flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-8">
         
-        {/* Left Side: Headline & Typography */}
         <motion.div 
           style={{ y: textY, opacity }}
           className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left"
         >
-          {/* Movement Label */}
           <motion.div 
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -113,7 +101,6 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Headline - NOT LEFT. NOT RIGHT. FORWARD. */}
           <div className="overflow-hidden flex flex-col font-geist font-black text-6xl sm:text-7xl md:text-8xl tracking-tight leading-[0.9] text-drf-text mb-6">
             <div className="overflow-hidden h-[1.1em] flex items-center justify-center lg:justify-start">
               <motion.span
@@ -147,7 +134,6 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Subheadline */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -157,7 +143,6 @@ export default function Hero() {
             A youth-driven movement for accountability, merit, transparency, and a stronger India.
           </motion.p>
 
-          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -172,7 +157,7 @@ export default function Hero() {
               <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
             <a
-              href="#manifesto"
+              href="/manifesto"
               className="w-full sm:w-auto text-center px-8 py-4 bg-transparent hover:bg-black/[0.03] text-drf-text font-bold text-sm border border-drf-border hover:border-drf-text rounded-lg transition-all duration-300"
             >
               Read Manifesto
@@ -180,12 +165,10 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right Side: Symbol / Emblem */}
         <motion.div 
           style={{ y: symbolY, rotate: symbolRotate, opacity }}
           className="flex-1 flex justify-center items-center relative"
         >
-          {/* DRF Symbol Floating container */}
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -193,26 +176,19 @@ export default function Hero() {
             whileHover={{ rotateY: 15, rotateX: -15, scale: 1.05 }}
             className="relative w-[280px] h-[280px] sm:w-[350px] sm:h-[350px] flex items-center justify-center animate-float cursor-pointer z-10"
           >
-            {/* Outer red glowing orb behind symbol */}
             <div className="absolute inset-0 rounded-full bg-drf-red/5 blur-[50px] animate-pulse-slow" />
-
-            {/* Glowing red boundary outlines */}
             <div className="absolute inset-6 border border-drf-red/20 rounded-full scale-105 pointer-events-none" />
             <div className="absolute inset-12 border border-drf-border/60 rounded-full pointer-events-none" />
 
-            {/* Actual Emblem Glass card */}
             <div className="w-[85%] h-[85%] glass-card rounded-2xl flex flex-col items-center justify-center p-8 border border-white/60 shadow-[0_12px_40px_rgba(0,0,0,0.05)] relative overflow-hidden group">
-              {/* Internal scanner */}
               <div className="absolute inset-0 w-full h-[2px] bg-drf-red/20 animate-scanline" />
               
-              {/* Stylized Vector Symbol */}
               <svg 
                 viewBox="0 0 100 100" 
                 fill="none" 
                 xmlns="http://www.w3.org/2000/svg" 
                 className="w-32 h-32 text-drf-text group-hover:text-drf-red transition-colors duration-500 mb-4"
               >
-                {/* Antennae */}
                 <motion.path 
                   d="M 46.5 37.5 C 38.5 25.5 24.5 16.5 6 13.5" 
                   stroke="currentColor" 
@@ -232,7 +208,6 @@ export default function Hero() {
                   transition={{ duration: 1.5, ease: "easeOut", delay: 0.2 }}
                 />
 
-                {/* Head */}
                 <motion.path 
                   d="M 44.5 43.5 C 44.5 38.5 55.5 38.5 55.5 43.5 Z" 
                   fill="currentColor"
@@ -241,7 +216,6 @@ export default function Hero() {
                   transition={{ duration: 0.5, delay: 0.5 }}
                 />
 
-                {/* Legs Left */}
                 <motion.path 
                   d="M 41.5 45.5 L 32.5 35.5 L 35.5 42" 
                   stroke="currentColor" 
@@ -273,7 +247,6 @@ export default function Hero() {
                   transition={{ duration: 1, delay: 0.8 }}
                 />
 
-                {/* Legs Right */}
                 <motion.path 
                   d="M 58.5 45.5 L 67.5 35.5 L 64.5 42" 
                   stroke="currentColor" 
@@ -305,8 +278,6 @@ export default function Hero() {
                   transition={{ duration: 1, delay: 0.8 }}
                 />
 
-                {/* Abdomen / Wings (D, R, F letters) */}
-                {/* D - Left Wing */}
                 <motion.path 
                   d="M 45.5 45.5 C 39.5 47 38.5 54 38.5 62 C 38.5 70 39.5 76 45.5 79.5 Z M 42.5 52 C 40 54 39.5 58 39.5 62 C 39.5 66 40 69 42.5 71 Z" 
                   fill="currentColor"
@@ -316,7 +287,6 @@ export default function Hero() {
                   transition={{ duration: 0.8, delay: 0.7 }}
                 />
 
-                {/* R - Center Abdomen */}
                 <motion.path 
                   d="M 47.5 45.5 L 47.5 81.5 L 49.5 81.5 L 49.5 63.5 H 50.5 L 52 81.5 H 54 L 52 61.5 C 52.8 59.5 53.2 57 53.2 54.5 C 53.2 49 51 45.5 47.5 45.5 Z M 49.5 50.5 H 51 C 51.8 50.5 52.2 51.5 52.2 54 C 52.2 56.5 51.8 57.5 51 57.5 H 49.5 Z" 
                   fill="currentColor"
@@ -326,7 +296,6 @@ export default function Hero() {
                   transition={{ duration: 0.8, delay: 0.8 }}
                 />
 
-                {/* F - Right Wing */}
                 <motion.path 
                   d="M 54.5 45.5 C 60.5 47 61.5 54 61.5 62 C 61.5 70 60.5 76 54.5 79.5 Z M 56.5 52 H 60.5 V 57.5 H 56.5 Z M 56.5 62.5 H 60.5 V 74.5 C 58.5 72.5 56.5 67.5 56.5 62.5 Z" 
                   fill="currentColor"
@@ -346,7 +315,6 @@ export default function Hero() {
                 </span>
               </div>
 
-              {/* Decorative brackets */}
               <div className="absolute top-4 left-4 font-geist-mono text-[9px] text-drf-text/30">[00]</div>
               <div className="absolute bottom-4 right-4 font-geist-mono text-[9px] text-drf-text/30">[FWD]</div>
             </div>
@@ -355,7 +323,6 @@ export default function Hero() {
 
       </div>
 
-      {/* Scroll Down Indicator */}
       <motion.div 
         style={{ opacity }}
         className="relative z-10 flex flex-col items-center justify-center"

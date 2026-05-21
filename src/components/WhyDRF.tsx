@@ -51,7 +51,6 @@ export default function WhyDRF() {
       id="why-drf" 
       className="relative py-24 bg-drf-bg-primary overflow-hidden border-t border-drf-border"
     >
-      {/* Background Gradients */}
       <div className="absolute top-[10%] left-[5%] w-[400px] h-[400px] red-radial-glow pointer-events-none z-0" />
       <div className="absolute inset-0 grid-overlay opacity-10 pointer-events-none z-0" />
 
@@ -63,17 +62,14 @@ export default function WhyDRF() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start"
         >
-          {/* Left Column: Narrative storytelling */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             
-            {/* Tag */}
             <motion.div variants={itemVariants} className="mb-4">
               <span className="font-geist-mono text-[9px] uppercase tracking-widest text-drf-red font-black">
                 THE CRISIS
               </span>
             </motion.div>
 
-            {/* Title */}
             <motion.h2 
               variants={itemVariants}
               className="text-4xl sm:text-5xl font-black tracking-tight text-drf-text mb-8 leading-[1.05]"
@@ -84,7 +80,6 @@ export default function WhyDRF() {
               </span>
             </motion.h2>
 
-            {/* Storytelling Text */}
             <div className="flex flex-col gap-6 font-geist text-base text-drf-text/75 leading-relaxed">
               <motion.p variants={itemVariants}>
                 For decades, the political landscape has been carved into artificial halves. We are asked to choose Left or Right, traditional or reactionary. Meanwhile, the actual machinery of governance remains sluggish, opaque, and outdated.
@@ -103,10 +98,9 @@ export default function WhyDRF() {
               </motion.p>
             </div>
             
-            {/* Stats highlight link */}
             <motion.div variants={itemVariants} className="mt-8">
               <a 
-                href="#manifesto" 
+                href="/manifesto" 
                 className="inline-flex items-center gap-2 text-xs font-geist-mono font-bold text-drf-red hover:text-drf-dark-red group transition-colors"
               >
                 <span>EXPLORE OUR POLICY ENGINE</span>
@@ -115,7 +109,6 @@ export default function WhyDRF() {
             </motion.div>
           </div>
 
-          {/* Right Column: Animated Stats Dashboard */}
           <div className="lg:col-span-5 flex flex-col gap-6 lg:mt-12 w-full">
             {statCards.map((card, idx) => (
               <motion.div
@@ -124,7 +117,6 @@ export default function WhyDRF() {
                 whileHover={{ y: -5, boxShadow: "0 10px 30px rgba(0,0,0,0.04)" }}
                 className="glass-card rounded-xl p-6 border border-white/60 relative overflow-hidden transition-all duration-300 group"
               >
-                {/* Visual red accent indicator */}
                 <div className="absolute top-0 left-0 w-[4px] h-full bg-drf-border group-hover:bg-drf-red transition-colors duration-300" />
                 
                 <div className="flex items-center justify-between mb-4">

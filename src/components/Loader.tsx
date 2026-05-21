@@ -25,12 +25,12 @@ export default function Loader({ onComplete }: LoaderProps) {
     if (currentStep < logs.length) {
       const timeout = setTimeout(() => {
         setCurrentStep((prev) => prev + 1);
-      }, 500); // 500ms per step
+      }, 500);
       return () => clearTimeout(timeout);
     } else {
       const timeout = setTimeout(() => {
         setIsDone(true);
-        setTimeout(onComplete, 800); // Wait for fadeout animation to complete
+        setTimeout(onComplete, 800);
       }, 600);
       return () => clearTimeout(timeout);
     }
@@ -45,12 +45,10 @@ export default function Loader({ onComplete }: LoaderProps) {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-drf-bg-primary p-6"
         >
-          {/* Futuristic grid overlay inside the loader */}
           <div className="absolute inset-0 grid-overlay pointer-events-none" />
           <div className="absolute inset-0 red-radial-glow pointer-events-none" />
           
           <div className="relative z-10 w-full max-w-xl flex flex-col items-center">
-            {/* DRF Stylized Icon Animation */}
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -61,15 +59,13 @@ export default function Loader({ onComplete }: LoaderProps) {
                 <span className="font-geist-mono font-black text-2xl tracking-tighter text-drf-red select-none">
                   DRF
                 </span>
-                {/* Scanner line in the loader icon */}
                 <div className="absolute inset-0 w-full h-[2px] bg-drf-red opacity-40 animate-scanline" />
               </div>
             </motion.div>
 
-            {/* Kinetic Text / Slogan Display */}
             <div className="h-20 flex items-center justify-center text-center overflow-hidden mb-8">
               <AnimatePresence mode="wait">
-                {currentStep === 0 && (
+                {(currentStep === 0 || currentStep === 1) && (
                   <motion.h1
                     key="left"
                     initial={{ y: 40, opacity: 0 }}
@@ -80,7 +76,7 @@ export default function Loader({ onComplete }: LoaderProps) {
                     NOT LEFT.
                   </motion.h1>
                 )}
-                {currentStep === 2 && (
+                {(currentStep === 2 || currentStep === 3) && (
                   <motion.h1
                     key="right"
                     initial={{ y: 40, opacity: 0 }}
@@ -105,7 +101,6 @@ export default function Loader({ onComplete }: LoaderProps) {
               </AnimatePresence>
             </div>
 
-            {/* Simulated Cyber-Political Terminal Logs */}
             <div className="w-full h-24 border border-drf-border/60 bg-white/40 backdrop-blur-sm rounded p-4 font-geist-mono text-xs text-drf-text/75 select-none flex flex-col justify-end gap-1.5 shadow-sm">
               {logs.slice(0, Math.min(currentStep + 1, logs.length)).map((log, index) => (
                 <motion.div
@@ -123,7 +118,6 @@ export default function Loader({ onComplete }: LoaderProps) {
               ))}
             </div>
 
-            {/* Progress bar */}
             <div className="w-full bg-drf-border/50 h-[2px] mt-6 overflow-hidden rounded">
               <motion.div
                 className="bg-drf-red h-full"

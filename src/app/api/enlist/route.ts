@@ -4,7 +4,6 @@ import Roacher from "@/models/Roacher";
 
 export async function POST(request: Request) {
   try {
-    // Connect to MongoDB
     await connectDB();
 
     const body = await request.json();
@@ -20,24 +19,21 @@ export async function POST(request: Request) {
       longitude,
     } = body;
 
-    // Basic Validation
     if (!name || !email || !state || !ageGroup) {
       return NextResponse.json(
-        { error: "All registration fields are required to activate your node." },
+        { error: "All registration fields are required." },
         { status: 400 }
       );
     }
 
-    // Check if email already registered
     const existingRoacher = await Roacher.findOne({ email });
     if (existingRoacher) {
       return NextResponse.json(
-        { error: "This secure email is already registered as an active node." },
+        { error: "This email is already registered." },
         { status: 409 }
       );
     }
 
-    // Parse client IP address from request headers or use client-supplied IP
     const forwarded = request.headers.get("x-forwarded-for");
     const headerIp = forwarded
       ? forwarded.split(",")[0].trim()
@@ -47,12 +43,11 @@ export async function POST(request: Request) {
       ? headerIp
       : (body.ip || "127.0.0.1");
 
-    // Generate unique sequential DRF Roach ID
+    // sequential id generation (DRF-001001 base offset)
     const count = await Roacher.countDocuments();
     const nextSequence = 1000 + count + 1;
     const roachId = `DRF-${String(nextSequence).padStart(6, "0")}`;
 
-    // Create and save new Roacher registration with network data
     const newRoacher = new Roacher({
       name,
       email,
@@ -69,8 +64,6 @@ export async function POST(request: Request) {
 
     await newRoacher.save();
 
-    console.log(`[DRF DB] Registered Roacher: ${name} (${roachId}) from IP: ${ip} [Geo: ${locationCity || "Unknown"}]`);
-
     return NextResponse.json({
       success: true,
       roachId,
@@ -82,10 +75,9 @@ export async function POST(request: Request) {
       }
     });
   } catch (error) {
-    console.error("[DRF Enlist Error]", error);
-    const errorMessage = error instanceof Error ? error.message : "Unknown database error";
+    console.error("Registration error:", error);
     return NextResponse.json(
-      { error: "Database transaction failed.", details: errorMessage },
+      { error: "Database transaction failed." },
       { status: 500 }
     );
   }

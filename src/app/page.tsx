@@ -22,49 +22,25 @@ export default function Home() {
 
   return (
     <>
-      {/* Cinematic Loader */}
       <Loader onComplete={() => setLoading(false)} />
 
-      {/* Global Interactive Elements (rendered once loading completes) */}
       {!loading && (
         <div className="relative min-h-screen flex flex-col">
-          {/* Custom animated cursor */}
           <CustomCursor />
-          
-          {/* Movie-grade noise film overlay */}
           <NoiseOverlay />
-          
-          {/* Floating Top Navigation */}
           <Navbar />
           
-          {/* Landing Sections */}
           <main className="flex-grow">
-            {/* Immersive Hero Header */}
             <Hero />
-            
-            {/* Live Campaign Slogan Ticker */}
             <Ticker />
-            
-            {/* Split narrative: Why DRF exists */}
             <WhyDRF />
-            
-            {/* Grid framework: The Six Policies */}
             <Agenda />
-            
-            {/* Testimonial walls: Anonymous concerns scrolling */}
             <YouthVoices />
-            
-            {/* Dark Red statistics count section */}
             <RoachersCounter />
-            
-            {/* Editorial manifesto summary */}
             <Manifesto />
-            
-            {/* Action Item: Become a Roacher */}
             <JoinForm />
           </main>
           
-          {/* Minimal Dark Footer */}
           <Footer />
         </div>
       )}

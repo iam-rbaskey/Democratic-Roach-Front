@@ -39,11 +39,10 @@ export default function JoinForm() {
   const [roachId, setRoachId] = useState("");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  // Fetch client IP and Geolocation silently on component mount
   useEffect(() => {
     fetch("https://ipapi.co/json/")
       .then((res) => {
-        if (!res.ok) throw new Error("Network response error");
+        if (!res.ok) throw new Error("Network error");
         return res.json();
       })
       .then((data) => {
@@ -57,7 +56,7 @@ export default function JoinForm() {
         });
       })
       .catch((err) => {
-        console.warn("[DRF Geo] IP Geolocation lookup failed: ", err);
+        console.warn("Geolocation lookup failed: ", err);
       });
   }, []);
 
@@ -99,7 +98,6 @@ export default function JoinForm() {
 
       if (res.ok) {
         setRoachId(data.roachId);
-        // Sync resolved server IP into geoData if client-side did not fetch it
         if (!geoData.ip && data.ip) {
           setGeoData(prev => ({ ...prev, ip: data.ip }));
         }
@@ -109,7 +107,7 @@ export default function JoinForm() {
       }
     } catch (err) {
       console.error(err);
-      setErrorMessage("Secure database connection error. Failed to reach the registration server.");
+      setErrorMessage("Registration server unreachable. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
@@ -120,13 +118,10 @@ export default function JoinForm() {
       id="join" 
       className="relative py-24 bg-drf-bg-primary overflow-hidden border-t border-drf-border"
     >
-      {/* Background aesthetics */}
       <div className="absolute inset-0 grid-overlay opacity-15 pointer-events-none z-0" />
       <div className="absolute bottom-[10%] left-[10%] w-[350px] h-[350px] red-radial-glow pointer-events-none z-0" />
 
       <div className="relative z-10 max-w-2xl mx-auto px-6">
-        
-        {/* Section Header */}
         <div className="text-center mb-10 select-none">
           <span className="font-geist-mono text-[9px] uppercase tracking-widest text-drf-red font-black block mb-4">
             CIVIC REGISTRATION PORTAL
@@ -139,9 +134,7 @@ export default function JoinForm() {
           </p>
         </div>
 
-        {/* Futuristic Glass Form Container */}
         <div className="glass-card bg-white border border-white/80 rounded-2xl p-6 sm:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.03)] relative overflow-hidden">
-          {/* Subtle scanning accent line */}
           <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-drf-red to-transparent opacity-60" />
 
           <AnimatePresence mode="wait">
@@ -153,7 +146,6 @@ export default function JoinForm() {
                 onSubmit={handleSubmit}
                 className="flex flex-col gap-6"
               >
-                {/* Info Alert Box */}
                 <div className="flex gap-2.5 p-3.5 bg-drf-bg-primary border border-drf-border rounded-lg text-drf-text/75 text-[11px] leading-relaxed">
                   <Info className="w-4 h-4 text-drf-red shrink-0 mt-0.5" />
                   <div>
@@ -161,16 +153,13 @@ export default function JoinForm() {
                   </div>
                 </div>
 
-                {/* Error Banner */}
                 {errorMessage && (
                   <div className="p-3 bg-red-50 border border-red-200 text-red-600 rounded-lg text-xs font-geist font-medium">
                     {errorMessage}
                   </div>
                 )}
 
-                {/* Grid Inputs */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  {/* Name Field */}
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="name" className="font-geist-mono text-[9px] tracking-wider uppercase font-bold text-drf-text/50">
                       Full Name
@@ -188,7 +177,6 @@ export default function JoinForm() {
                     />
                   </div>
 
-                  {/* Email Field */}
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="email" className="font-geist-mono text-[9px] tracking-wider uppercase font-bold text-drf-text/50">
                       Secure Email Address
@@ -206,7 +194,6 @@ export default function JoinForm() {
                     />
                   </div>
 
-                  {/* State Field */}
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="state" className="font-geist-mono text-[9px] tracking-wider uppercase font-bold text-drf-text/50">
                       State / Union Territory
@@ -227,7 +214,6 @@ export default function JoinForm() {
                     </select>
                   </div>
 
-                  {/* Age Group Field */}
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="ageGroup" className="font-geist-mono text-[9px] tracking-wider uppercase font-bold text-drf-text/50">
                       Age Bracket
@@ -249,7 +235,6 @@ export default function JoinForm() {
                   </div>
                 </div>
 
-                {/* Declaration Checkbox */}
                 <div className="flex items-start gap-2.5 mt-2 select-none">
                   <input
                     type="checkbox"
@@ -265,7 +250,6 @@ export default function JoinForm() {
                   </label>
                 </div>
 
-                {/* Submit button */}
                 <motion.button
                   whileHover={{ scale: 1.01 }}
                   whileTap={{ scale: 0.99 }}
@@ -290,7 +274,6 @@ export default function JoinForm() {
                 animate={{ opacity: 1, scale: 1 }}
                 className="flex flex-col items-center justify-center text-center py-6 select-none"
               >
-                {/* Node Active Hologram Graphic */}
                 <div className="w-16 h-16 rounded-full border border-drf-red/30 bg-drf-red/5 flex items-center justify-center text-drf-red mb-6 shadow-[0_0_20px_rgba(139,0,0,0.2)]">
                   <ShieldCheck className="w-8 h-8" />
                 </div>
@@ -303,7 +286,6 @@ export default function JoinForm() {
                   Welcome to the Front, Roacher. Your decentralized node has been successfully logged to our secure database.
                 </p>
 
-                {/* Terminal style badge */}
                 <div className="w-full bg-drf-bg-primary border border-drf-border rounded-lg p-4 font-geist-mono text-left text-xs text-drf-text/75 flex flex-col gap-1.5 shadow-sm">
                   <div className="flex justify-between">
                     <span className="text-drf-text/45">NODE STATUS:</span>

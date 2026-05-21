@@ -20,15 +20,13 @@ function StatCounter({ label, target, suffix = "" }: StatItemProps) {
     if (!isInView) return;
 
     const start = 0;
-    const duration = 2000; // 2 seconds
+    const duration = 2000;
     const end = target;
     const startTime = performance.now();
 
     const updateCount = (currentTime: number) => {
       const elapsedTime = currentTime - startTime;
       const progress = Math.min(elapsedTime / duration, 1);
-      
-      // Easing function (easeOutQuad)
       const easeProgress = progress * (2 - progress);
       const currentVal = Math.floor(easeProgress * (end - start) + start);
       
@@ -69,7 +67,6 @@ function StatCounter({ label, target, suffix = "" }: StatItemProps) {
 export default function RoachersCounter() {
   return (
     <section className="relative py-24 overflow-hidden bg-[#0A0002] border-t border-drf-red/20">
-      {/* Dark Red Mesh Gradient Overlay */}
       <div 
         className="absolute inset-0 z-0 pointer-events-none opacity-40" 
         style={{
@@ -92,7 +89,6 @@ export default function RoachersCounter() {
           </p>
         </div>
 
-        {/* Counter Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y sm:divide-y-0 sm:divide-x divide-drf-border/10">
           <StatCounter label="Roachers Joined" target={142854} />
           <StatCounter label="Cities Reached" target={182} />

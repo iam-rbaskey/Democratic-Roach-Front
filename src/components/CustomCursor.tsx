@@ -9,17 +9,14 @@ export default function CustomCursor() {
   const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   
-  // Motion values for tracking cursor
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
   
-  // Spring settings for organic lag/inertia
   const springConfig = { damping: 40, stiffness: 400, mass: 0.4 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Only enable on desktop/non-touch devices
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     if (isTouchDevice) return;
 
@@ -62,7 +59,6 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Outer Ring */}
       <motion.div
         className="fixed top-0 left-0 w-8 h-8 rounded-full border border-drf-red pointer-events-none z-50 mix-blend-difference"
         style={{
@@ -81,7 +77,6 @@ export default function CustomCursor() {
         }}
         transition={{ type: "spring", stiffness: 500, damping: 28 }}
       />
-      {/* Inner Dot */}
       <motion.div
         className="fixed top-0 left-0 w-2.5 h-2.5 bg-drf-red rounded-full pointer-events-none z-50"
         style={{

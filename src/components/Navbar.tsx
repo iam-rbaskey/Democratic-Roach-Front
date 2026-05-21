@@ -12,11 +12,11 @@ export default function Navbar() {
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
 
   const links = [
-    { label: "Home", href: "#home" },
-    { label: "Agenda", href: "#agenda" },
-    { label: "Manifesto", href: "#manifesto" },
-    { label: "Movement", href: "#why-drf" },
-    { label: "Voices", href: "#voices" },
+    { label: "Home", href: "/#home" },
+    { label: "Agenda", href: "/#agenda" },
+    { label: "Manifesto", href: "/#manifesto" },
+    { label: "Movement", href: "/#why-drf" },
+    { label: "Voices", href: "/#voices" },
   ];
 
   useEffect(() => {
@@ -41,8 +41,7 @@ export default function Navbar() {
         }`}
       >
         <div className="flex items-center justify-between w-full">
-          {/* Logo */}
-          <a href="#home" className="flex items-center gap-2 group select-none">
+          <a href="/#home" className="flex items-center gap-2 group select-none">
             <span className="font-geist font-black text-xl tracking-tighter text-drf-text group-hover:text-drf-red transition-colors duration-300">
               DRF<span className="text-drf-red">.</span>
             </span>
@@ -53,7 +52,6 @@ export default function Navbar() {
             </div>
           </a>
 
-          {/* Desktop Navigation Links */}
           <div className="hidden md:flex items-center gap-1.5 relative">
             {links.map((link) => (
               <a
@@ -75,10 +73,9 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Call To Action Button (Desktop) */}
           <div className="hidden md:flex items-center">
             <a
-              href="#join"
+              href="/#join"
               className="group flex items-center gap-1 px-4 py-1.5 bg-drf-red hover:bg-drf-dark-red text-white text-xs font-semibold rounded-full shadow-[0_4px_12px_rgba(139,0,0,0.2)] hover:shadow-[0_4px_20px_rgba(139,0,0,0.4)] transition-all duration-300"
             >
               Join The Front
@@ -86,7 +83,6 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* Hamburger Menu Toggle (Mobile) */}
           <button
             onClick={() => setMobileMenuOpen(true)}
             className="md:hidden p-1.5 text-drf-text hover:text-drf-red rounded-full hover:bg-black/[0.04] transition-colors"
@@ -97,11 +93,9 @@ export default function Navbar() {
         </div>
       </motion.nav>
 
-      {/* Mobile Menu Panel */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 0.4 }}
@@ -109,7 +103,6 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="fixed inset-0 bg-black z-[99]"
             />
-            {/* Drawer */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -117,7 +110,6 @@ export default function Navbar() {
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="fixed top-0 right-0 bottom-0 w-[80%] max-w-sm bg-drf-bg-primary z-[100] p-6 shadow-2xl flex flex-col border-l border-drf-border"
             >
-              {/* Grid overlay for mobile drawer */}
               <div className="absolute inset-0 grid-overlay opacity-30 pointer-events-none" />
               
               <div className="flex items-center justify-between mb-8 z-10">
@@ -132,7 +124,6 @@ export default function Navbar() {
                 </button>
               </div>
 
-              {/* Links List */}
               <div className="flex flex-col gap-4 z-10 flex-grow justify-center">
                 {links.map((link, idx) => (
                   <motion.a
@@ -149,10 +140,9 @@ export default function Navbar() {
                 ))}
               </div>
 
-              {/* Action Button */}
               <div className="z-10 mt-auto">
                 <a
-                  href="#join"
+                  href="/#join"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center gap-2 w-full py-4 bg-drf-red hover:bg-drf-dark-red text-white text-center font-bold rounded-lg shadow-lg"
                 >

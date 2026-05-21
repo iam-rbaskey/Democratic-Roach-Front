@@ -51,7 +51,6 @@ export default function YouthVoices() {
     },
   ];
 
-  // Double the rows for seamless looping
   const scrollRow1 = [...row1, ...row1, ...row1];
   const scrollRow2 = [...row2, ...row2, ...row2];
 
@@ -60,12 +59,10 @@ export default function YouthVoices() {
       id="voices" 
       className="relative py-24 bg-drf-bg-primary overflow-hidden border-t border-drf-border"
     >
-      {/* Grid background */}
       <div className="absolute inset-0 grid-overlay opacity-15 pointer-events-none z-0" />
       <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] red-radial-glow pointer-events-none z-0" />
 
       <div className="relative z-10 w-full">
-        {/* Section Header */}
         <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16">
           <span className="font-geist-mono text-[9px] uppercase tracking-widest text-drf-red font-black block mb-4">
             THE SUBMISSIONS
@@ -78,9 +75,7 @@ export default function YouthVoices() {
           </p>
         </div>
 
-        {/* Testimonials Wall (Horizontal Scrolling Rows) */}
         <div className="flex flex-col gap-6 w-full select-none">
-          {/* Row 1 - Scroll Left */}
           <div className="w-full overflow-hidden flex relative py-2">
             <div className="flex gap-6 whitespace-nowrap animate-marquee hover:[animation-play-state:paused] pr-6">
               {scrollRow1.map((card, idx) => (
@@ -108,12 +103,10 @@ export default function YouthVoices() {
                 </div>
               ))}
             </div>
-            {/* Gradient masks */}
             <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-drf-bg-primary to-transparent z-10 pointer-events-none" />
             <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-drf-bg-primary to-transparent z-10 pointer-events-none" />
           </div>
 
-          {/* Row 2 - Scroll Right */}
           <div className="w-full overflow-hidden flex relative py-2">
             <div className="flex gap-6 whitespace-nowrap animate-marquee-reverse hover:[animation-play-state:paused] pr-6">
               {scrollRow2.map((card, idx) => (
@@ -141,17 +134,15 @@ export default function YouthVoices() {
                 </div>
               ))}
             </div>
-            {/* Gradient masks */}
             <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-drf-bg-primary to-transparent z-10 pointer-events-none" />
             <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-drf-bg-primary to-transparent z-10 pointer-events-none" />
           </div>
         </div>
 
-        {/* Warning label at the bottom */}
         <div className="max-w-7xl mx-auto px-6 md:px-12 mt-12 flex justify-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 border border-drf-border/60 bg-white/50 backdrop-blur-sm rounded-lg text-[10px] sm:text-xs text-drf-text/60 font-geist-mono">
             <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 animate-pulse" />
-            <span>SUBMISSIONS ARE END-TO-END ENCRYPTED. WE NEVER STORE USER IP ADDRESSES.</span>
+            <span>ALL SUBMISSIONS ARE SANITIZED TO PROTECT USER CONFIDENTIALITY AND SAFETY.</span>
           </div>
         </div>
       </div>

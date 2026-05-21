@@ -15,7 +15,6 @@ export default function Ticker({
     "ZERO CORRUPTION.", "TECHNOLOGY & OPPORTUNITY."
   ] 
 }: TickerProps) {
-  // Duplicate items array to make the looping seamless
   const repeatedItems = [...items, ...items, ...items, ...items];
 
   return (
